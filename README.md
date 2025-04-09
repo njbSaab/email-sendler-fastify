@@ -7,12 +7,6 @@ Endpoint: POST /api/feedback
 Purpose: Sends an email with a special confirmation code to a single recipient.
 Request Body:
 json
-
-Collapse
-
-Wrap
-
-Copy
 {
   "email": "user@example.com",
   "code": "ABC123"
@@ -26,12 +20,6 @@ Endpoint: POST /users/email/send-bulk
 Purpose: Sends emails to multiple recipients with a custom subject and content.
 Request Body:
 json
-
-Collapse
-
-Wrap
-
-Copy
 {
   "emails": ["user1@example.com", "user2@example.com"],
   "subject": "Newsletter",
@@ -44,40 +32,19 @@ Details: Automatically detects if the content is HTML (based on <html presence) 
 Static File Serving
 Serves static files from the public directory.
 The root route (/) serves index.html by default.
+
 Prerequisites
 Node.js: Version 14.x or higher.
 SMTP Server: An SMTP server (e.g., Gmail, SendGrid) with credentials configured in a .env file.
+
 Installation
 Clone the repository:
-
-bash
-
-Collapse
-
-Wrap
-
-Copy
 git clone https://github.com/yourusername/your-repo.git
 cd your-repo
 Install dependencies:
-
-bash
-
-Collapse
-
-Wrap
-
-Copy
 npm install
+
 Create a .env file in the root directory with the following variables:
-
-text
-
-Collapse
-
-Wrap
-
-Copy
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_SECURE=false
@@ -85,15 +52,8 @@ SMTP_USER=your-email@example.com
 SMTP_PASS=your-password
 EMAIL_FROM="Your Name <your-email@example.com>"
 PORT=3123
+
 Start the server:
-
-bash
-
-Collapse
-
-Wrap
-
-Copy
 npm start
 The server will run on http://localhost:3123 (or the port specified in PORT).
 
@@ -103,14 +63,8 @@ fastify: High-performance web framework.
 @fastify/cors: For enabling CORS.
 nodemailer: For sending emails via SMTP.
 dotenv: For loading environment variables from a .env file.
+
 Project Structure
-text
-
-Collapse
-
-Wrap
-
-Copy
 your-repo/
 ├── public/           # Static files (e.g., index.html)
 ├── config.js         # Email sending logic with Nodemailer
@@ -118,32 +72,20 @@ your-repo/
 ├── .env              # Environment variables (not tracked)
 ├── package.json      # Project metadata and dependencies
 └── README.md         # This file
+
 Usage Examples
 Send a Single Email:
-bash
-
-Collapse
-
-Wrap
-
-Copy
 curl -X POST http://localhost:3123/api/feedback \
 -H "Content-Type: application/json" \
 -d '{"email": "user@example.com", "code": "XYZ789"}'
+
 Send Bulk Emails:
-bash
-
-Collapse
-
-Wrap
-
-Copy
 curl -X POST http://localhost:3123/users/email/send-bulk \
 -H "Content-Type: application/json" \
 -d '{"emails": ["user1@example.com", "user2@example.com"], "subject": "Test", "content": "Hello World!"}'
+
 Notes
 The server uses Fastify’s built-in logger for request and error logging.
 Ensure your SMTP credentials are secure and not exposed in the codebase.
 The server supports both plain text and HTML email content for bulk sending.
-License
- (or specify your preferred license).
+
