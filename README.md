@@ -5,16 +5,18 @@ Features
 Single Email Sending (/api/feedback)
 Endpoint: POST /api/feedback
 Purpose: Sends an email with a special confirmation code to a single recipient.
+
 Request Body:
 json
 {
   "email": "user@example.com",
   "code": "ABC123"
 }
+
 Response:
 Success: 200 OK with { success: true, message: "Email sent successfully." }
 Error: 400 Bad Request if fields are missing, or 500 Internal Server Error if sending fails.
-Details: The email subject is hardcoded as "Code Confirmation", and the body includes the provided code in a Japanese message (スペシャルコードをゲット！${code}).
+
 Bulk Email Sending (/users/email/send-bulk)
 Endpoint: POST /users/email/send-bulk
 Purpose: Sends emails to multiple recipients with a custom subject and content.
